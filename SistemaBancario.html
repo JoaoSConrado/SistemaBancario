@@ -1,0 +1,156 @@
+<html>
+
+		<head>
+
+			<script>
+				var nome = prompt(String("Digite o seu nome"));
+				alert("Olá, " + nome + "! É um prazer ter você por aqui!")
+
+				var saldo = 1000.00; //Float 1.36
+
+				function inicio() {
+					
+					var escolha = parseInt(prompt('Selecione uma opção 1.) Saldo 2.) Extrato 3.) Saque 4.) Depósito 5.) Transferência 6.) Sair'));
+
+					switch (escolha) {
+						case 1:
+							ver_saldo();
+							break;
+						case 2:
+							ver_extrato();
+							break;
+						case 3:
+							fazer_saque();
+							break;
+						case 4:
+							fazer_deposito();
+							break;
+						case 5:
+							fazer_transferencia();
+							break;
+						case 6:
+							sair();
+							break;
+					
+
+					}
+				}		
+
+				function ver_saldo() {
+					var senhasaldo = parseFloat(prompt("DIGITE A SENHA PARA ACESSAR O SEU SALDO:"))
+					if (senhasaldo === 3589) {
+						alert('Seu saldo atual é: ' + saldo);
+					} else {
+						alert("SENHA INCORRETA!!!");
+					}
+					inicio();
+				}
+
+				function fazer_deposito() {
+					var deposito = parseFloat(prompt('Qual o valor para depósito?'));
+					if (deposito <= 0) {
+						alert("Operação não autorizada")
+						inicio ()
+					}
+					if (isNaN(deposito) || deposito === '') {
+						alert('Por favor, informe um número:');
+						fazer_deposito();
+					} else {
+						saldo += deposito;
+						ver_saldo();
+					}
+				}
+
+				function fazer_saque() {
+					var senhasaque = parseFloat(prompt("DIGITE A SENHA PARA EFETUAR O SAQUE:"))
+					if (senhasaque === 3589) {
+						var saque = parseFloat(prompt('Qual o valor para saque?'));
+						if (saque <= 0) {
+							alert("Operação não autorizada")
+							inicio ()
+						}
+						if (isNaN(saque) || saque === '') {
+							alert('Por favor, informe um número:');
+							fazer_saque();
+						} if (saque > saldo) {
+							alert("Operação não autorizada")
+							inicio ()
+						} else {
+							saldo -= saque;
+							
+							ver_saldo();
+						}
+					} else {
+						alert("SENHA INCORRETA!!!");
+						inicio();
+					}
+					
+				}
+
+				function fazer_transferencia() {
+					var senhatransferencia = parseFloat(prompt("DIGITE A SENHA PARA FAZER UMA TRANSFERÊNCIA:"))
+					if (senhatransferencia === 3589) {
+						var conta = parseFloat(prompt("Informe o numero da conta que deseja fazer a transferência: "))
+						if (isNaN(conta) || conta === '') {
+							alert('Por favor, informe um número!');
+							fazer_transferencia();
+						}
+						var transferencia = parseFloat(prompt("Qual é o valor da transferência?"));
+						if (transferencia <= 0) {
+							alert("Operação não autorizada")
+							inicio ()
+						}
+						if (isNaN(transferencia) || transferencia === '') {
+							alert('Por favor, informe um número:');
+							fazer_transferencia();
+						} if (transferencia > saldo) {
+							alert("Operação não autorizada")
+							inicio ()
+						} else {
+							saldo -= transferencia;
+							
+							ver_saldo();
+						}
+					} else {
+						alert("SENHA INCORRETA!!!");
+						inicio();
+					}
+					
+				}
+
+				function ver_extrato() {
+					var senhaextrato = parseFloat(prompt("DIGITE A SENHA PARA VER O SEU EXTRATO:"))
+					if (senhaextrato === 3589) {
+						alert("20 Mar 2022" + "\n" + "BAR DA DANI          -R$ 66,66 " + "\n" + "AMERICANAS          -R$ 200,92 " + "\n" + "PIX (Andre Angelim Palhares)     +R$ 500,00 " + "\n\n" + "21 Mar 2022" + "\n" + "SHOPPE          -R$ 232,42 " + "\n" + "IFOOD          -R$ 19,99" + "\n\n" + "22 Mar 2022" + "\n" + "PADARIA         -R$ 13,42" + "\n" + "PIX (Gabriel Augusto)        +R$ 899,99");
+						inicio();
+					} else {
+						alert("SENHA INCORRETA!!!");
+						inicio();
+					}
+					
+				}
+
+				function erro() {
+					alert('Por favor, informe um número entre 1 e 6');
+					inicio();
+				}
+
+				function sair() {
+					var confirma = confirm('agradecemos por utilizar os serviços do banco ' + nome + ', foi um prazer ter você por aqui!' + "\n\n" + 'Você deseja mesmo sair?');
+					if (confirma) {
+						window.close();
+					} else {
+						inicio();
+					
+				}
+			}
+		
+				inicio();
+			</script>
+    	</head>
+    	<body>
+
+    	</body>
+	
+</html>
+    
